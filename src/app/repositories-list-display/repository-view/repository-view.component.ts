@@ -1,15 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { Repository } from 'src/app/models/Repository';
 
 @Component({
   selector: 'app-repository-view',
   templateUrl: './repository-view.component.html',
   styleUrls: ['./repository-view.component.css']
 })
-export class RepositoryViewComponent implements OnInit {
+export class RepositoryViewComponent implements OnChanges {
+  repository: Repository;
+
+  @Input() passRepository: Repository;
 
   constructor() { }
 
-  ngOnInit() {
+  ngOnChanges(): void {
+    this.repository = this.passRepository;
   }
 
 }
