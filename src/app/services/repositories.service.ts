@@ -7,16 +7,24 @@ import { Repository } from '../models/Repository';
 })
 export class RepositoriesService {
   lastPageLoaded: number = 1;
+  dateToFetch: string;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    var date = new Date();
+    date.setDate(date.getDate() - 30);
+    this.dateToFetch = date.toISOString().split('T')[0];
+  }
 
   getLastNDaysRepositories() {
     const url = 'https://api.github.com/search/repositories';
     let params = {
-      q: 'created:>2019-03-24',
+      q: 'created:>' + this.dateToFetch,
       sort: 'stars',
-      order: 'desc'
+      order: 'desc',
+      page: this.lastPageLoaded.toString()
     };
+
+    this.lastPageLoaded++;
     
     return this.http.get<Repository>(url, { params });
   }
