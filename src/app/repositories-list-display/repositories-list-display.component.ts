@@ -14,28 +14,31 @@ export class RepositoriesListDisplayComponent implements OnInit {
   constructor(private repositoriesService: RepositoriesService) { }
 
   ngOnInit() {
-    let fetchedRepositories;
+    this.getRepositoriesData();
+  }
+
+  onScroll() {
+    this.getRepositoriesData();
+  }
+
+  getRepositoriesData() {
     this.repositoriesService.getLastNDaysRepositories().subscribe(
       (data) => {
-        fetchedRepositories = data;
-      },
-      (error) => {
-
-      },
-      () => {
-        fetchedRepositories.items.forEach(repository => {
+        data["items"].forEach(repository => {
           this.repositories.push({
             name: repository.name,
             description: repository.description,
             startsNumber: repository.stargazers_count,
             issuesNumber: repository.open_issues_count,
             ownerAvatar: repository.owner.avatar_url,
+            ownerName: repository.owner.login,
             creationDate: new Date(repository.created_at)
           });
         });
+      },
+      (error) => {
+
       }
     );
   }
-
-
 }

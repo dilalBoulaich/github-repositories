@@ -1,6 +1,16 @@
-<img src="{{ repository?.ownerAvatar }}" width="150" height="150">
-<h2>{{ repository?.name }}</h2>
-<h3>{{ repository?.description }}</h3>
-<h4>{{ repository?.startsNumber }}</h4>
-<h4>{{ repository?.issuesNumber }}</h4>
-<h4>{{ repository?.creationDate }}</h4>
+<div class="card">
+        <div class="row no-gutters">
+            <div class="col-auto">
+                <img src="{{ repository?.ownerAvatar }}" class="img-thumbnail" width="200" height="200">
+            </div>
+            <div class="col">
+                <div class="card-block px-2">
+                    <h5 class="card-title">{{ repository?.name }}</h5>
+                    <p class="card-text">{{ repository?.description }}</p>
+                    <span class="badge badge-success">Stars: {{ repository?.startsNumber | numberFormatter }}</span>
+                    <span class="badge badge-danger">Issues: {{ repository?.issuesNumber | numberFormatter }}</span>
+                    <span>submitted {{ repository?.creationDate }} days ago by {{ repository?.ownerName }}</span>
+                </div>
+            </div>
+        </div>
+  </div>

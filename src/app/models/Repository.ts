@@ -5,5 +5,6 @@ export interface Repository
     startsNumber: number;
     issuesNumber: number;
     ownerAvatar: string;
+    ownerName: string;
     creationDate: Date;
 }

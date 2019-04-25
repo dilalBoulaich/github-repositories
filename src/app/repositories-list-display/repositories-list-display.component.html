@@ -1,4 +1,18 @@
-<h1>List of the repositories created in Github the last 30 days</h1>
-<ul>
-    <li *ngFor="let repository of repositories"><app-repository-view [passRepository]="repository"></app-repository-view></li>
-</ul>
+<div class="row">
+    <div class="col-md-12">
+        <h1>List of the repositories created in Github the last 30 days</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <app-repository-view *ngFor="let repository of repositories"  [passRepository]="repository"></app-repository-view>
+        <div
+            class="search-results"
+            infiniteScroll
+            [infiniteScrollDistance]="0"
+            [infiniteScrollThrottle]="50"
+            (scrolled)="onScroll()"
+      ></div>
+    </div>
+</div>
+  
