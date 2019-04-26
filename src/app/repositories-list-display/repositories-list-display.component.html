@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-md-12">
-        <h1>List of the repositories created in Github the last 30 days</h1>
+        <h2>List of the repositories created in Github the last 30 days ({{ repositoresNumberFound }} repository has been found)</h2>
     </div>
 </div>
 <div class="row">
@@ -14,5 +14,10 @@
             (scrolled)="onScroll()"
       ></div>
     </div>
+</div>
+<div *ngIf="loaderDisplay" class="loader">
+    <div></div>
+    <div></div>
+    <div></div>
 </div>
   

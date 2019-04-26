@@ -9,7 +9,7 @@
                     <p class="card-text">{{ repository?.description }}</p>
                     <span class="badge badge-success">Stars: {{ repository?.startsNumber | numberFormatter }}</span>
                     <span class="badge badge-danger">Issues: {{ repository?.issuesNumber | numberFormatter }}</span>
-                    <span>submitted {{ repository?.creationDate }} days ago by {{ repository?.ownerName }}</span>
+                    <span>submitted {{ repository?.creationDate | priorDaysNumber }} days ago by {{ repository?.ownerName }}</span>
                 </div>
             </div>
         </div>

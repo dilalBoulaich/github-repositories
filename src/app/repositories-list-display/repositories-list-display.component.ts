@@ -10,6 +10,8 @@ import { Repository } from '../models/Repository';
 export class RepositoriesListDisplayComponent implements OnInit {
 
   repositories = new Array<Repository>();
+  repositoresNumberFound: number;
+  loaderDisplay: boolean = true;
 
   constructor(private repositoriesService: RepositoriesService) { }
 
@@ -24,6 +26,9 @@ export class RepositoriesListDisplayComponent implements OnInit {
   getRepositoriesData() {
     this.repositoriesService.getLastNDaysRepositories().subscribe(
       (data) => {
+        this.loaderDisplay = true;
+        this.repositoresNumberFound = data["total_count"];
+
         data["items"].forEach(repository => {
           this.repositories.push({
             name: repository.name,
@@ -38,6 +43,9 @@ export class RepositoriesListDisplayComponent implements OnInit {
       },
       (error) => {
 
+      },
+      () => {
+        this.loaderDisplay = false;
       }
     );
   }
