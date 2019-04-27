@@ -1,9 +1,9 @@
-<div class="card">
+<div id="repository-card" class="card">
         <div class="row no-gutters">
-            <div class="col-auto">
-                <img src="{{ repository?.ownerAvatar }}" class="img-thumbnail" width="200" height="200">
+            <div class="col-auto repository-image">
+                <img src="{{ repository?.ownerAvatar }}" width="200" height="200">
             </div>
-            <div class="col">
+            <div class="col repository-content">
                 <div class="card-block px-2">
                     <h5 class="card-title">{{ repository?.name }}</h5>
                     <p class="card-text">{{ repository?.description }}</p>

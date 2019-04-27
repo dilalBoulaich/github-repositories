@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Repository } from '../models/Repository';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,7 @@ export class RepositoriesService {
   }
 
   getLastNDaysRepositories() {
-    const url = 'https://api.github.com/search/repositories';
+    const url = environment.githubApiUrl;
     let params = {
       q: 'created:>' + this.dateToFetch,
       sort: 'stars',

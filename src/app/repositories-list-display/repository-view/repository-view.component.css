@@ -1,0 +1,25 @@
+#repository-card {
+    margin: 20px 0px;
+    padding: 15px;
+}
+
+.repository-content span {
+    margin: 0px 5px;
+}
+
+@media screen and (max-width: 450px) {
+    .repository-content {
+        margin-top: 15px;
+        text-align: center;
+    }
+
+    .repository-image {
+        margin: auto;
+    }
+}
+
+@media screen and (min-width: 451px) {
+    .repository-content {
+        margin-left: 15px;
+    }   
+}

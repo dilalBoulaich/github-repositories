@@ -1,20 +1,26 @@
 <div class="row">
     <div class="col-md-12">
-        <h2>List of the repositories created in Github the last 30 days ({{ repositoresNumberFound }} repository has been found)</h2>
+        <div class="jumbotron">
+            <h2>List of the repositories created in Github last 30 days</h2>
+            <div *ngIf="repositoresNumberFound">
+                <hr>
+                <span><strong>{{ repositoresNumberFound }}</strong> repository found</span>
+            </div>
+            
+        </div>        
     </div>
 </div>
-<div class="row">
-    <div class="col-md-12">
-        <app-repository-view *ngFor="let repository of repositories"  [passRepository]="repository"></app-repository-view>
-        <div
-            class="search-results"
-            infiniteScroll
-            [infiniteScrollDistance]="0"
-            [infiniteScrollThrottle]="50"
-            (scrolled)="onScroll()"
-      ></div>
-    </div>
-</div>
+
+<app-repository-view *ngFor="let repository of repositories"  [passRepository]="repository"></app-repository-view>
+
+<div
+    class="search-results"
+    infiniteScroll
+    [infiniteScrollDistance]="0"
+    [infiniteScrollThrottle]="50"
+    (scrolled)="onScroll()"
+></div>
+<!-- LOADER -->
 <div *ngIf="loaderDisplay" class="loader">
     <div></div>
     <div></div>
